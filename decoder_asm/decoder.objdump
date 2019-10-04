@@ -1,0 +1,44 @@
+
+decoder.obj:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00000000 <anchor>:
+   0:	60                   	pusha  
+   1:	50                   	push   %eax
+   2:	59                   	pop    %ecx
+   3:	8d 49 3f             	lea    0x3f(%ecx),%ecx
+   6:	51                   	push   %ecx
+   7:	5a                   	pop    %edx
+
+00000008 <loop>:
+   8:	80 39 26             	cmpb   $0x26,(%ecx)
+   b:	74 31                	je     3e <end_of_payload>
+   d:	30 c0                	xor    %al,%al
+   f:	30 db                	xor    %bl,%bl
+  11:	32 01                	xor    (%ecx),%al
+  13:	c0 e0 04             	shl    $0x4,%al
+  16:	41                   	inc    %ecx
+  17:	32 19                	xor    (%ecx),%bl
+  19:	c0 e3 02             	shl    $0x2,%bl
+  1c:	c0 eb 04             	shr    $0x4,%bl
+  1f:	30 d8                	xor    %bl,%al
+  21:	88 02                	mov    %al,(%edx)
+  23:	42                   	inc    %edx
+  24:	30 c0                	xor    %al,%al
+  26:	30 db                	xor    %bl,%bl
+  28:	32 01                	xor    (%ecx),%al
+  2a:	41                   	inc    %ecx
+  2b:	32 19                	xor    (%ecx),%bl
+  2d:	c0 e0 06             	shl    $0x6,%al
+  30:	c0 e3 02             	shl    $0x2,%bl
+  33:	c0 eb 02             	shr    $0x2,%bl
+  36:	30 d8                	xor    %bl,%al
+  38:	88 02                	mov    %al,(%edx)
+  3a:	42                   	inc    %edx
+  3b:	41                   	inc    %ecx
+  3c:	75 ca                	jne    8 <loop>
+
+0000003e <end_of_payload>:
+  3e:	61                   	popa   
