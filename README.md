@@ -1,7 +1,4 @@
 # Printable-Encoder
-
-for other shellcode printable code change shellcode varible in encoded.sh file
-
-TO check
-
-run run.sh file
+encoded.sh - to encode original shellcode to printable shellcode 
+run.sh    - check encoded shellcode is bypassing pritable filter
+filter.c - contain printable filter check 
