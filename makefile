@@ -1,7 +1,7 @@
 all:	clean filter encoder
-filter : filter.c
+filter : Filter/filter.c
 	gcc -m32 -fno-stack-protector execstack Filter/filter.c -o filter -g
-encoder : encoder.c
+encoder : encoder_c/encoder.c
 	gcc encoder_c/encoder.c -o encoder
 clean:
 	rm -rf filter encoder
