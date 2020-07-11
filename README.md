@@ -8,8 +8,25 @@
 </ol>
 
 <b> Folders </b>
-encoder_c - Contain C file of encoder
-decoder_asm - Contain all the decoder asm, obj and onjdump files
-Size_shellcode - Contain some shell script comapring size of printable encoder and sub encoder
-test_Encoder - Contain file which test shellcode decoding during execution
-Filter - Continer C file that has printable charater filter 
+<table>
+	<tr>
+		<td>encoder_c</td>
+		<td>Contain encoder C file </td>
+	</tr>
+	<tr>
+		<td>decoder_asm</td>
+		<td>Contain all the decoder asm, obj and onjdump files</td>
+	</tr>
+	<tr>
+		<td>Size_shellcode</td>
+		<td>Contain some shell script comapring size of printable encoder and sub encoder</td>
+	</tr>
+	<tr>
+		<td>test_Encoder</td>
+		<td>Contain file which test shellcode decoding during execution</td>
+	</tr>
+	<tr>
+		<td>Filter</td>
+		<td>Continer C file that has printable charater filter </td>
+	</tr>
+</table>
