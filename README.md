@@ -15,7 +15,7 @@
 	</tr>
 	<tr>
 		<td>decoder_asm</td>
-		<td>Contain all the decoder asm, obj and onjdump files</td>
+		<td>Contain all the decoder asm, obj and objdump files</td>
 	</tr>
 	<tr>
 		<td>Size_shellcode</td>
