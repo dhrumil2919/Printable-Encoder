@@ -2,7 +2,7 @@
 
 <b> How to run </b>
 <ol>
-	<li>run <span style="color: orange"> make </span> command in terminal. it will create all necessary binaries</li>
+	<li>run <p style="color: orange"> make </p> command in terminal. it will create all necessary binaries</li>
 	<li> To encoded shellcode execute <span style="color: orange"> encoded </span>  shell script. it will encode your shellcode and print it in output </li>
 	<li> To test shellcode against printable filter execute <span style="color: orange"> run </span>  shell script. it will encode your shellcode and pass that encoded shellcode to <span style="color: orange"> filter </span>  binary. which have pritable filter in it.
 </ol>
