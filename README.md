@@ -2,9 +2,9 @@
 
 <b> How to run </b>
 <ol>
-	<li>run make command in terminal. it will create all necessary binaries</li>
-	<li> enter your desire shellcode in encoder.sh shellcode variable </li>
-	<li> Run run.sh shellscript </li>
+	<li>run <i><u>make</u></i> command in terminal. it will create all necessary binaries</li>
+	<li> To encoded shellcode execute <i>encoded</i> shell script. it will encode your shellcode and print it in output </li>
+	<li> To test shellcode against printable filter execute <i>run</i> shell script. it will encode your shellcode and pass that encoded shellcode to <i> filter </i> binary. which have pritable filter in it.
 </ol>
 
 <b> Folders </b>
