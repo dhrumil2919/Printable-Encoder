@@ -2,9 +2,9 @@
 
 <b> How to run </b>
 <ol>
-	<li>run `make` command in terminal. it will create all necessary binaries</li>
-	<li> To encoded shellcode execute `encoded` shell script. it will encode your shellcode and print it in output </li>
-	<li> To test shellcode against printable filter execute `run` shell script. it will encode your shellcode and pass that encoded shellcode to `filter` binary. which have pritable filter in it.
+	<li>run <span style="color: orange"> make </span> command in terminal. it will create all necessary binaries</li>
+	<li> To encoded shellcode execute <span style="color: orange"> encoded </span>  shell script. it will encode your shellcode and print it in output </li>
+	<li> To test shellcode against printable filter execute <span style="color: orange"> run </span>  shell script. it will encode your shellcode and pass that encoded shellcode to <span style="color: orange"> filter </span>  binary. which have pritable filter in it.
 </ol>
 
 <b> Folders </b>
