@@ -18,11 +18,11 @@
 		<td>Contain all the decoder asm, obj and objdump files</td>
 	</tr>
 	<tr>
-		<td>Size_shellcode</td>
+		<td>size_shellcode_c</td>
 		<td>Contain some shell script comapring size of printable encoder and sub encoder</td>
 	</tr>
 	<tr>
-		<td>test_Encoder</td>
+		<td>test_encoder_c</td>
 		<td>Contain file which test shellcode decoding during execution</td>
 	</tr>
 	<tr>
