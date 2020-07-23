@@ -26,7 +26,7 @@
 		<td>Contain file which test shellcode decoding during execution</td>
 	</tr>
 	<tr>
-		<td>Filter</td>
+		<td>filter_c</td>
 		<td>Continer C file that has printable charater filter </td>
 	</tr>
 </table>
