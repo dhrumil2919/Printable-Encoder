@@ -1,0 +1,86 @@
+.TH psc 7 "Last update: August 04, 2020"
+
+.SH NAME
+psc \- printable shellcode compiler
+
+.SH SYNOPSIS
+.B psc
+.B [btechn]
+"shellcode"
+
+.SH DESCRIPTION
+Converts arbitrary x86 shellcode into printable shellcode.
+
+Whenever the C driver is used, psc will re-encode the string into byte sequence. This is to prevent any reformatting due to escape sequences.
+
+.SH OPTIONS
+.TP
+.BR -b
+output in
+.I binary string format
+for C
+
+.TP
+.BR -t
+printable shellcode with
+.I testing shim
+
+.TP
+.BR -e
+only
+.I encoded payload
+of the printable shellcode 
+
+.TP
+.BR -c
+.I c program
+to try out the (printable) shellcode
+
+.TP
+.BR -n
+skip printing
+.I newline
+after printable shellcode
+
+.TP
+.BR -h
+show help
+
+.SH EXAMPLES
+.TP
+\fBpsc "\\xcd\\x80.."
+Prints out the printable shellcode.
+
+.TP
+\fBpsc -b "\\xcd\\x80.."
+Prints out the printable shellcode in format to embed in C code.
+
+.TP
+\fBpsc -c "\\xcd\\x80.."
+Prints out the C driver to for testing out the printable shellcode.
+
+.TP
+\fBpsc -e "\\xcd\\x80.."
+Prints only the encoded payload of the printable shellcode.
+
+.TP
+\fBpsc -eb "\\xcd\\x80.."
+Prints only the encoded payload of the printable shellcode in format to embed in C code.
+
+.TP
+\fBpsc -t "\\xcd\\x80.."
+Prints printable shellcode with the testing shim.
+
+.TP
+\fBpsc -tb "\\xcd\\x80.."
+Prints printable shellcode with the testing shim in format to embed in C code.
+
+.TP
+\fBpsc -tc "\\xcd\\x80.."
+Prints C code to test out the printable shellcode with the testing shim.
+
+.fi
+
+.SH AUTHORS
+Dhrumil Patel <201601228@daiict.ac.in>,
+Aditya Basu <ab.aditya.basu@gmail.com>
