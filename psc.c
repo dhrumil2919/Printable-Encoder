@@ -126,47 +126,48 @@ char *bytes_to_str(char *bytes, int size)
 
 unsigned char *encode(char bincode[])
 {
-	int i, j;
-	const char end = 0x26;	// & characeter at the end of shellcode
-	char temp[4];
-	unsigned char *encoded;
-	int encoded_size;
-	int n = strlen(bincode)/4;
-	int k = n;
+    int i, j;
+    char temp[4];
+    unsigned char *encoded;
+    unsigned int x, a, b, c;
+    int encoded_size;
+    int n = strlen(bincode)/4;
+    int k = n;
+    const char end = 0x26; /* '&'' for end of shellcode */
 
-	n = n + n%2;
-	encoded_size = ((3*n)/2)+2;
-	encoded = malloc(encoded_size*sizeof(unsigned char));
+    n = n + n%2;
+    encoded_size = ((3*n)/2)+2;
+    encoded = malloc(encoded_size*sizeof(unsigned char));
 
-	for(i = 0, j = 0; i < n ; i++) {
-		temp[0] = bincode[4*i+2];
-		temp[1] = bincode[4*i+3];
-		i++;
+    for(i = 0, j = 0; i < n ; i++) {
+        temp[0] = bincode[4*i+2];
+        temp[1] = bincode[4*i+3];
+        i++;
 
-		if(i == k) {    // Adding NOP instruction if needed
-			temp[2] = '9';
-			temp[3] = '0';
-		} else {
-			temp[2] = bincode[4*i+2];
-			temp[3] = bincode[4*i+3];
-		}
-		
-		unsigned int x = strtoul(temp,0,16);  // converting string to int base 16
-		unsigned int c = (0x3f & x) + 0x3F; 		
-		unsigned int b = ((x >> 6) & 0x3f) + 0x3F; 	
-		unsigned int a = ((x >> 12) & 0xf) + 0x3F;
-		
-		encoded[3*j] = a;
-		encoded[3*j+1] = b;
-		encoded[3*j+2] = c;
-		
-		j++;
-	}
+        if(i == k) { /* add NOP instruction if needed */
+            temp[2] = '9';
+            temp[3] = '0';
+        } else {
+            temp[2] = bincode[4*i+2];
+            temp[3] = bincode[4*i+3];
+        }
 
-	encoded[3*j] = end;
-	encoded[encoded_size-1] = '\0';
+        x = strtoul(temp,0,16); /* string to int base 16 */
+        c = (0x3f & x) + 0x3F;
+        b = ((x >> 6) & 0x3f) + 0x3F;
+        a = ((x >> 12) & 0xf) + 0x3F;
 
-	return encoded;
+        encoded[3*j] = a;
+        encoded[3*j+1] = b;
+        encoded[3*j+2] = c;
+
+        j++;
+    }
+
+    encoded[3*j] = end;
+    encoded[encoded_size-1] = '\0';
+
+    return encoded;
 }
 
 
