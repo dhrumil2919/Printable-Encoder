@@ -24,7 +24,7 @@
     "\n"                                    \
     "#include <stdio.h>\n"                  \
     "\n"                                    \
-    "char *shellcode = \"%s%s\";\n"         \
+    "char shellcode[] = \"%s%s\";\n"        \
     "\n"                                    \
     "int main(int argc, char *argv[]) {\n"  \
                                             \
@@ -75,11 +75,11 @@
     "int main(int argc, char *argv[]) {\n"  \
                                             \
     "\tn = sizeof(original);\n"             \
-    "\tsignal(SIGTERM,handler);\n"          \
-    "\tprintf(\"Shellcode: %%s\\n\",shellcode);\n"\
+    "\tsignal(SIGTERM, handler);\n"         \
+    "\tprintf(\"Shellcode: %%s\\n\", shellcode);\n"\
     "\tprintf(\"Length: %%d\\n\", strlen(shellcode));\n"\
     "\n"                                    \
-    "\tint (*ret)() = (int(*)())shellcode;\n"\
+    "\tint (*ret)() = (int(*)()) shellcode;\n"\
     "\tret();\n"                            \
     "}\n"                                   \
     "\n"
