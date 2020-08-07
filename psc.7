@@ -1,4 +1,4 @@
-.TH psc 7 "Last update: August 04, 2020"
+.TH psc 7 "Last update: August 07, 2020"
 
 .SH NAME
 psc \- printable shellcode compiler
@@ -11,7 +11,13 @@ psc \- printable shellcode compiler
 .SH DESCRIPTION
 Converts arbitrary x86 shellcode into printable shellcode.
 
-Whenever the C driver is used, psc will re-encode the string into byte sequence. This is to prevent any reformatting due to escape sequences.
+Whenever a C stub is generated, psc will encode the string as a binary byte
+.B (-b)
+sequence.
+This prevents the C compiler from interpreting any incidental escape sequences that
+are part of the printable shellcode.
+
+For examples, refer end of this manual.
 
 .SH OPTIONS
 .TP
@@ -56,8 +62,12 @@ Prints out the printable shellcode.
 Prints out the printable shellcode in format to embed in C code.
 
 .TP
-\fBpsc -c "\\xcd\\x80.."
-Prints out the C driver to for testing out the printable shellcode.
+\fBpsc -c "\\xcd\\x80.." >run.c
+Generates a C stub to run the printable shellcode.
+For compilation instructions, refer to comments inside run.c.
+
+.ti -7
+\l' 5i.'
 
 .TP
 \fBpsc -e "\\xcd\\x80.."
@@ -67,20 +77,27 @@ Prints only the encoded payload of the printable shellcode.
 \fBpsc -eb "\\xcd\\x80.."
 Prints only the encoded payload of the printable shellcode in format to embed in C code.
 
+.ti -7
+\l' 5i.'
+
 .TP
 \fBpsc -t "\\xcd\\x80.."
 Prints printable shellcode with the testing shim.
+Note that the shellcode is no longer printable due to the testing shim.
 
 .TP
 \fBpsc -tb "\\xcd\\x80.."
 Prints printable shellcode with the testing shim in format to embed in C code.
+Note that the shellcode is no longer printable due to the testing shim.
 
 .TP
-\fBpsc -tc "\\xcd\\x80.."
-Prints C code to test out the printable shellcode with the testing shim.
+\fBpsc -tc "\\xcd\\x80.." >run.c
+Generates C stub with the \fItesting shim\fR embedded in the printable shellcode.
+Note that the shellcode is no longer printable due to the testing shim.
+For compilation instructions, refer to comments inside run.c.
 
 .fi
 
 .SH AUTHORS
 Dhrumil Patel <201601228@daiict.ac.in>,
-Aditya Basu <ab.aditya.basu@gmail.com>
+Aditya Basu <aditya.basu@psu.edu>
