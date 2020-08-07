@@ -140,7 +140,7 @@ unsigned char *encode(char bincode[])
     encoded = malloc(encoded_size*sizeof(unsigned char));
 
     for(i = 0, j = 0; i < n ; i++) {
-    	temp = malloc(5*sizeof(unsigned char));
+        temp = malloc(5*sizeof(unsigned char));
         temp[0] = bincode[4*i+2];
         temp[1] = bincode[4*i+3];
         i++;
@@ -152,7 +152,8 @@ unsigned char *encode(char bincode[])
             temp[2] = bincode[4*i+2];
             temp[3] = bincode[4*i+3];
         }
-	temp[4]='\0';
+
+        temp[4]='\0';
         x = strtoul(temp,0,16); /* string to int base 16 */
         c = (0x3f & x) + 0x3F;
         b = ((x >> 6) & 0x3f) + 0x3F;
@@ -168,6 +169,7 @@ unsigned char *encode(char bincode[])
 
     encoded[3*j] = end;
     encoded[encoded_size-1] = '\0';
+
     return encoded;
 }
 
@@ -184,6 +186,7 @@ int main(int argc, char *argv[])
     char *decoder_str;
     char *encodedpayload_str;
     char *test_decoder_str;
+
     prg = argv[0];
 
     while ((opt = getopt(argc, argv, ":btechn")) != -1) {
@@ -229,7 +232,8 @@ int main(int argc, char *argv[])
 
     decoder_str = bytes_to_str(DECODER, strlen(DECODER));
     encodedpayload_str = bytes_to_str(encoded, strlen(encoded));
-    test_decoder_str = bytes_to_str(TEST_DECODER,strlen(TEST_DECODER));
+    test_decoder_str = bytes_to_str(TEST_DECODER, strlen(TEST_DECODER));
+
     /* Take relevant action */
     if (flag_onlyenc) {
         if (flag_binary)
@@ -237,7 +241,7 @@ int main(int argc, char *argv[])
         else
             printf("%s", encoded);
     } else if (flag_test && flag_cdriver) {
-        printf(DRIVER_CTEST, inputsc, test_decoder_str, TESTSHIM_STR,encodedpayload_str);
+        printf(DRIVER_CTEST, inputsc, test_decoder_str, TESTSHIM_STR, encodedpayload_str);
     } else if (flag_test) {
         if (flag_binary)
             printf("%s%s%s", test_decoder_str, TESTSHIM_STR, encodedpayload_str);
@@ -260,6 +264,7 @@ int main(int argc, char *argv[])
     free(decoder_str);
     free(test_decoder_str);
     free(encoded);
+
     return 0;
 }
 
