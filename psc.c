@@ -127,7 +127,7 @@ char *bytes_to_str(char *bytes, int size)
 unsigned char *encode(char bincode[])
 {
     int i, j;
-    char temp[4];
+    unsigned char *temp;
     unsigned char *encoded;
     unsigned int x, a, b, c;
     int encoded_size;
@@ -140,6 +140,7 @@ unsigned char *encode(char bincode[])
     encoded = malloc(encoded_size*sizeof(unsigned char));
 
     for(i = 0, j = 0; i < n ; i++) {
+    	temp = malloc(5*sizeof(unsigned char));
         temp[0] = bincode[4*i+2];
         temp[1] = bincode[4*i+3];
         i++;
@@ -151,7 +152,7 @@ unsigned char *encode(char bincode[])
             temp[2] = bincode[4*i+2];
             temp[3] = bincode[4*i+3];
         }
-
+	temp[4]='\0';
         x = strtoul(temp,0,16); /* string to int base 16 */
         c = (0x3f & x) + 0x3F;
         b = ((x >> 6) & 0x3f) + 0x3F;
@@ -162,11 +163,11 @@ unsigned char *encode(char bincode[])
         encoded[3*j+2] = c;
 
         j++;
+        free(temp);
     }
 
     encoded[3*j] = end;
     encoded[encoded_size-1] = '\0';
-
     return encoded;
 }
 
