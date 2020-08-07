@@ -62,12 +62,12 @@
     "\n"                                    \
     "\n"                                    \
     "void handler() {\n"                    \
-    "\tprintf(\"Testing start......\\n\");\n"\
-    "\tint i, j;\n"                         \
+    "\tint i, j;\n\n"                       \
+    "\tprintf(\"Testing... \");\n"          \
     "\tfor(i = 0, j = E; i < n-1; i++, j++)\n"\
     "\t\tif(original[i] != shellcode[j])\n" \
     "\t\t\tprintf(\"Byte Num %%d = %%d\\n\", i, original[i]);\n" \
-    "\tprintf(\"Finish\\n\");\n"             \
+    "\tprintf(\"done.\\n\");\n"             \
     "\texit(0);\n"                          \
     "}\n"                                   \
     "\n"                                    \
