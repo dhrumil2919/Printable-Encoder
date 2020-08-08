@@ -1,10 +1,23 @@
-CC = gcc
+CC     = gcc
+PREFIX = /usr/local
 
 psc: psc.c
 	$(CC) psc.c -o psc
 
 all: psc
 	@(cd alt && make)
+
+install: psc
+	install -m 555 psc $(PREFIX)/bin
+	install -d $(PREFIX)/man/man7
+	install -m 444 psc.7 $(PREFIX)/man/man7/
+
+
+.Phony: uninstall
+uninstall:
+	rm -f $(PREFIX)/bin/psc
+	rm -f $(PREFIX)/man/man7/psc.7
+	-rmdir $(PREFIX)/man/man7/
 
 .Phony: clean
 clean:
