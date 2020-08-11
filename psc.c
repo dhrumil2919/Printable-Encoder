@@ -19,7 +19,7 @@
  */
 #define DRIVER_C \
     "/* Compile using:\n"                   \
-    " *    gcc -m32 -fno-stack-protector -z execstack -o run run.c\n" \
+    " *    gcc -m32 -z execstack -o run run.c\n" \
     " */\n"                                 \
     "\n"                                    \
     "#include <stdio.h>\n"                  \
@@ -42,7 +42,7 @@
  */
 #define DRIVER_CTEST                        \
     "/* Compile using:\n"                   \
-    " *    gcc -m32 -fno-stack-protector -z execstack -o run run.c\n" \
+    " *    gcc -m32 -z execstack -o run run.c\n" \
     " */\n"                                 \
     "\n"                                    \
     "#include <stdio.h>\n"                  \
